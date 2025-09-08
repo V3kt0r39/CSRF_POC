@@ -1,7 +1,7 @@
 # TMG CSRF Assessment Tool
 
 > Disclaimer
-> This tool is intended solely for use in controlled lab environments or for authorized penetration testing and defensive security validation with explicit written permission from the system owner. Do not use this project to violate privacy, break laws, or bypass security controls. The authors and contributors assume no liability for misuse. By using this software, you agree to comply with all applicable laws and policies.
+> This project is intended for educational use in lab environments or for authorized penetration testing only. You must have prior written permission from the system owner before running any tests. The authors and contributors assume no liability for misuse. Use responsibly and comply with all applicable laws, policies, and contracts.
 
 A compact helper to assess CSRF protection and HTTP normalization in Microsoft Forefront TMG / Exchange OWA publications. It does NOT bypass defenses. Instead, it runs safe probes and reports common protection markers.
 
@@ -66,13 +66,14 @@ CSRF testing should verify that a reverse proxy (TMG) or the application (OWA/FB
 ## Architecture
 ```mermaid
 flowchart LR
-  A[Browser opens PoC UI] --> B[PoC /poc auto-posts form -> CookieAuth.dll]
-  A --> C[/verify or /verify-deep (server-side POST)]
-  C -->|Origin/Referer set per config| D[Target: TMG/OWA]
+  A[Browser opens UI] --> B[PoC page]
+  B -->|Auto-submit form| D[CookieAuth.dll (target)]
+  A --> C[Verify / Verify-Deep]
+  C -->|Origin/Referer per config| D
   D --> E{Responses}
-  E -->|4xx/redirects/cookies| F[Protection markers]
-  F --> G[Verdict: Enabled/Possibly Not Enforced]
-  A --> H[/suite (GET/POST probes)] --> D
+  E -->|4xx, GetLogon, cookie reset| F[Protection markers]
+  F --> G[Verdict]
+  A --> H[Suite probes] --> D
 ```
 
 
