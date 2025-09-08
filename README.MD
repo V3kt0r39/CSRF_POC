@@ -64,17 +64,17 @@ CSRF testing should verify that a reverse proxy (TMG) or the application (OWA/FB
 
 
 ## Architecture
-```mermaid
 flowchart LR
   A[Browser opens UI] --> B[PoC page]
-  B -->|Auto-submit form| D[CookieAuth.dll (target)]
+  B -->|Auto-submit form| D[CookieAuth.dll target]
   A --> C[Verify / Verify-Deep]
   C -->|Origin/Referer per config| D
   D --> E{Responses}
   E -->|4xx, GetLogon, cookie reset| F[Protection markers]
   F --> G[Verdict]
-  A --> H[Suite probes] --> D
-```
+  A --> H[Suite probes]
+  H --> D
+
 
 
 ## Getting Started
