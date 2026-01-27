@@ -71,13 +71,13 @@ This enhanced CSRF assessment tool is designed to help security professionals ev
 ## Architecture
 ```mermaid
 flowchart LR
-  A[Browser opens Enhanced PoC UI] --> B[Enhanced PoC /poc auto-posts form -> CookieAuth.dll with dynamic token handling and vulnerability confidence scoring]
-  A --> C[/verify or /verify-deep (enhanced server-side POST with dynamic Origin/Referer control and vulnerability confidence scoring)]
-  C -->|Dynamic Origin/Referer control with vulnerability confidence scoring| D[Target: Web Application]
-  D --> E{Comprehensive Responses with dynamic token handling and vulnerability confidence scoring}
-  E -->|4xx/redirects/cookies with dynamic token handling and enhanced analysis| F[Comprehensive Protection markers with dynamic token handling and vulnerability confidence scoring]
-  F --> G[Enhanced Verdict: Enabled/Possibly Not Enforced with dynamic token handling and vulnerability confidence scoring]
-  A --> H[/suite (comprehensive GET/POST probes with dynamic token handling and vulnerability confidence scoring)] --> D
+  A["Browser opens Enhanced PoC UI"] --> B["Enhanced PoC /poc auto-posts form -> CookieAuth.dll with dynamic token handling and vulnerability confidence scoring"]
+  A --> C["/verify or /verify-deep (enhanced server-side POST with dynamic Origin/Referer control and vulnerability confidence scoring)"]
+  C -->|"Dynamic Origin/Referer control with vulnerability confidence scoring"| D["Target: Web Application"]
+  D --> E{"Comprehensive Responses with dynamic token handling and vulnerability confidence scoring"}
+  E -->|"4xx/redirects/cookies with dynamic token handling and enhanced analysis"| F["Comprehensive Protection markers with dynamic token handling and vulnerability confidence scoring"]
+  F --> G["Enhanced Verdict: Enabled/Possibly Not Enforced with dynamic token handling and vulnerability confidence scoring"]
+  A --> H["/suite (comprehensive GET/POST probes with dynamic token handling and vulnerability confidence scoring)"] --> D
 ```
 
 
