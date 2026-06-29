@@ -49,13 +49,13 @@ This enhanced CSRF assessment tool is designed to help security professionals ev
 ## Architecture
 ```mermaid
 flowchart LR
-  A[Browser opens PoC UI] --> B[PoC /poc auto-posts form -> CookieAuth.dll]
-  A --> C[/verify or /verify-deep server-side POST]
-  C -->|Origin/Referer set per config| D[Target: TMG/OWA]
+  A[Browser opens PoC UI] --> B["PoC /poc auto-posts form to CookieAuth.dll"]
+  A --> C["/verify or /verify-deep server-side POST"]
+  C -->|Origin and Referer set per config| D[Target TMG/OWA]
   D --> E{Responses}
-  E -->|4xx/redirects/cookies| F[Protection markers]
-  F --> G[Verdict: Enabled/Possibly Not Enforced]
-  A --> H[/suite GET/POST probes] --> D
+  E -->|4xx, redirects, cookies| F[Protection markers]
+  F --> G["Verdict: Enabled or Possibly Not Enforced"]
+  A --> H["/suite GET/POST probes"] --> D
 ```
 
 
